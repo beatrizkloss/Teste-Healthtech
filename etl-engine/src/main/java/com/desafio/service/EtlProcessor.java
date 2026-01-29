@@ -1,8 +1,8 @@
-package br.com.healthtech.desafio.service;
+package com.desafio.service;
 
-import br.com.healthtech.desafio.model.DadosFinanceiro;
-import br.com.healthtech.desafio.model.Operadora;
-import br.com.healthtech.desafio.repository.DatabaseRepository;
+import com.desafio.model.DadosFinanceiro;
+import com.desafio.model.Operadora;
+import com.desafio.repository.DatabaseRepository;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

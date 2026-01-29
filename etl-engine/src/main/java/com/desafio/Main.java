@@ -1,8 +1,8 @@
-package br.com.healthtech.desafio;
+package com.desafio;
 
-import br.com.healthtech.desafio.repository.DatabaseRepository;
-import br.com.healthtech.desafio.service.EtlProcessor;
-import br.com.healthtech.desafio.service.ZipService;
+import com.desafio.repository.DatabaseRepository;
+import com.desafio.service.EtlProcessor;
+import com.desafio.service.ZipService;
 import java.nio.file.*;
 
 public class Main {

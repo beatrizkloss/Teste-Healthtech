@@ -1,4 +1,4 @@
-package br.com.healthtech.desafio.model;
+package com.desafio.model;
 
 public class Operadora {
     private String regAns;

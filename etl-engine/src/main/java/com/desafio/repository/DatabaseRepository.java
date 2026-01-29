@@ -1,7 +1,7 @@
-package br.com.healthtech.desafio.repository;
+package com.desafio.repository;
 
-import br.com.healthtech.desafio.model.DadosFinanceiro;
-import br.com.healthtech.desafio.model.Operadora;
+import com.desafio.model.DadosFinanceiro;
+import com.desafio.model.Operadora;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
