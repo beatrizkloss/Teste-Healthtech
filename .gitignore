@@ -18,3 +18,5 @@ Thumbs.db
 *.zip
 *.rar
 .env
+venv/
+__pycache__/

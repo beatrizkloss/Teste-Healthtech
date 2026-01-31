@@ -37,19 +37,6 @@ public class EtlProcessor {
         }
     }
 
-    private void processarUmArquivo(File csv, PrintWriter writer) throws IOException {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(csv), StandardCharsets.UTF_8))) {
-            String linha;
-            while ((linha = br.readLine()) != null) {
-                if (ehLinhaDeDespesa(linha)) {
-                    DadosFinanceiro dado = converterLinha(linha);
-                    if (dado != null) {
-                        escreverLinha(writer, dado);
-                    }
-                }
-            }
-        }
-    }
 
     private boolean ehLinhaDeDespesa(String linha) {
         return linha.contains(";41;") || linha.contains("EVENTOS INDENIZÁVEIS LÍQUIDOS");
