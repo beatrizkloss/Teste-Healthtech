@@ -1,7 +1,20 @@
 from fastapi import FastAPI, HTTPException
 from database import get_db_connection
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+origins = [
+    "http://localhost:5173",    
+    "http://127.0.0.1:5173",   
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"], 
+)
 @app.get("/")
 def read_root():
     return {"status": "API Online", "docs": "/docs"}
@@ -89,7 +102,7 @@ def despesas_operadora(cnpj: str):
     conn.close()
     return despesas
 
-# estatísticas gerais
+# estatísticas gerais -- # POR ESTADO (UF) E TOP 5 OPERADORAS
 @app.get("/api/estatisticas")
 def estatisticas_gerais():
     conn = get_db_connection()
@@ -108,11 +121,22 @@ def estatisticas_gerais():
     """
     cursor.execute(query_top5)
     top_5 = cursor.fetchall()
+
+    query_uf = """
+        SELECT o.uf, SUM(d.vl_saldo_final) as total
+        FROM demonstracoes_financeiras d
+        JOIN operadoras o ON d.reg_ans = o.reg_ans
+        GROUP BY o.uf
+        ORDER BY total DESC
+    """
+    cursor.execute(query_uf)
+    por_uf = cursor.fetchall()
     
     conn.close()
-    
+
     return {
         "total_despesas": stats["total_geral"],
         "media_despesas": stats["media_geral"],
-        "top_5_operadoras": top_5
+        "top_5_operadoras": top_5, 
+        "despesas_por_uf": por_uf  
     }
