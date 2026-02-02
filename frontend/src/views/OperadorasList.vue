@@ -7,9 +7,9 @@
         <input
           v-model="busca"
           placeholder="Busque por Razão Social ou CNPJ..."
-          @keyup.enter="buscarOperadoras"
+          @keyup.enter="novaBusca"
         />
-        <button @click="buscarOperadoras">
+        <button @click="novaBusca">
           <i class="fa-solid fa-magnifying-glass"></i> Buscar
         </button>
       </div>
@@ -87,6 +87,10 @@ export default {
     this.buscarOperadoras();
   },
   methods: {
+    novaBusca() {
+      this.page = 1;
+      this.buscarOperadoras();
+    },
     async buscarOperadoras() {
       try {
         const response = await api.get("/operadoras", {
