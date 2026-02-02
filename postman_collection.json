@@ -1,0 +1,129 @@
+{
+  "info": {
+    "_postman_id": "93f5956b-102e-4e61-aba9-c88bed8143b3",
+    "name": "Teste Beatriz - Operadoras",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44839573"
+  },
+  "item": [
+    {
+      "name": "1. Listar Operadoras",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/operadoras?page=1&limit=10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "operadoras"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Buscar Operadora",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/operadoras?busca=BRADESCO",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "operadoras"
+          ],
+          "query": [
+            {
+              "key": "busca",
+              "value": "BRADESCO"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Detalhes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/operadoras/39427632000171",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "operadoras",
+            "39427632000171"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Histórico Despesas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/operadoras/39427632000171/despesas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "operadoras",
+            "39427632000171",
+            "despesas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Dashboard",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/estatisticas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "estatisticas"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
