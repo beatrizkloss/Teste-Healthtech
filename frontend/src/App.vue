@@ -1,34 +1,66 @@
 <template>
-  <div class="container">
-    <nav class="navbar">
-      <router-link to="/">📋 Lista de Operadoras</router-link> |
-      <router-link to="/dashboard">📊 Estatísticas (Dashboard)</router-link>
-    </nav>
+  <header class="navbar">
+    <div class="navbar-content">
+      <div class="logo">🏥 Gestão ANS</div>
+      <nav>
+        <router-link to="/">Operadoras</router-link>
+        <router-link to="/dashboard">Dashboard</router-link>
+      </nav>
+    </div>
+  </header>
 
+  <main class="container">
     <router-view />
-  </div>
+  </main>
 </template>
 
 <style>
-.container {
-  font-family: Arial, sans-serif;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-}
 .navbar {
-  padding: 20px;
-  background-color: #f0f0f0;
-  margin-bottom: 20px;
-  border-radius: 8px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-.navbar a {
+
+.navbar-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #2563eb;
+  letter-spacing: -0.5px;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
   text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  margin-right: 15px;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 22px 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
 }
-.navbar a.router-link-active {
-  color: #42b983;
+
+nav a:hover {
+  color: #111827;
+}
+
+nav a.router-link-active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
 }
 </style>

@@ -2,49 +2,71 @@
   <div>
     <h1>Operadoras de Saúde</h1>
 
-    <div class="search-box">
-      <input
-        v-model="busca"
-        placeholder="Buscar por nome ou CNPJ..."
-        @keyup.enter="buscarOperadoras"
-      />
-      <button @click="buscarOperadoras">🔍 Buscar</button>
-    </div>
+    <div class="card">
+      <div class="search-box">
+        <input
+          v-model="busca"
+          placeholder="Busque por Razão Social ou CNPJ..."
+          @keyup.enter="buscarOperadoras"
+        />
+        <button @click="buscarOperadoras">
+          <i class="fa-solid fa-magnifying-glass"></i> Buscar
+        </button>
+      </div>
 
-    <table border="1" width="100%" cellspacing="0" cellpadding="10">
-      <thead>
-        <tr>
-          <th>CNPJ</th>
-          <th>Razão Social</th>
-          <th>UF</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="op in operadoras" :key="op.cnpj">
-          <td>{{ op.cnpj }}</td>
-          <td>{{ op.razao_social }}</td>
-          <td>{{ op.uf }}</td>
-          <td>
-            <router-link :to="{ name: 'Detalhes', params: { cnpj: op.cnpj } }">
-              <button>Ver Detalhes</button>
-            </router-link>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <div class="table-container">
+        <table cellspacing="0">
+          <thead>
+            <tr>
+              <th>CNPJ</th>
+              <th>Razão Social</th>
+              <th>UF</th>
+              <th style="text-align: right">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="op in operadoras" :key="op.cnpj">
+              <td>{{ op.cnpj }}</td>
+              <td>
+                <strong>{{ op.razao_social }}</strong>
+              </td>
+              <td>
+                <span class="badge-uf">{{ op.uf }}</span>
+              </td>
 
-    <div class="pagination">
-      <button :disabled="page <= 1" @click="mudarPagina(page - 1)">
-        ⬅ Anterior
-      </button>
-      <span>Página {{ page }}</span>
-      <button
-        :disabled="operadoras.length < limit"
-        @click="mudarPagina(page + 1)"
-      >
-        Próxima ➡
-      </button>
+              <td style="text-align: right">
+                <router-link
+                  :to="{ name: 'Detalhes', params: { cnpj: op.cnpj } }"
+                >
+                  <button class="secondary">
+                    <i class="fa-solid fa-eye"></i> Ver Detalhes
+                  </button>
+                </router-link>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button
+          class="secondary"
+          :disabled="page <= 1"
+          @click="mudarPagina(page - 1)"
+        >
+          <i class="fa-solid fa-chevron-left"></i> Anterior
+        </button>
+
+        <span>Página {{ page }}</span>
+
+        <button
+          class="secondary"
+          :disabled="operadoras.length < limit"
+          @click="mudarPagina(page + 1)"
+        >
+          Próxima <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
   </div>
 </template>
