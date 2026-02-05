@@ -1,8 +1,5 @@
 # Gestão de Operadoras ANS
 
-
-Sistema fullstack para gestão de Operadoras de Saúde, abrangendo ETL, Banco de Dados e Interface Web.
-
 ## 🛠️ Tecnologias
 | Módulo | Tecnologia |
 | :--- | :--- |
